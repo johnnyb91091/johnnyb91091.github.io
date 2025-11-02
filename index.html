@@ -756,30 +756,31 @@ Zotabox.widgets = Zotabox.widgets || [];</script><style>.vfm--fixed{position:fix
 		}
 		
 		/* Dark overlay (visible on desktop/tablet) */
-		.awe-section-1 .home_slider-text::before {
-			content: '';
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			width: 60%;
-			height: 60%;
-			background: rgba(0, 0, 0, 0.5);
-			z-index: 1;
-			pointer-events: none;
-		}
+		// .awe-section-1 .home_slider-text::before {
+		// 	content: '';
+		// 	position: absolute;
+		// 	top: 50%;
+		// 	left: 50%;
+		// 	transform: translate(-50%, -50%);
+		// 	width: 60%;
+		// 	height: 60%;
+		// 	background: rgba(0, 0, 0, 0.5);
+		// 	z-index: 1;
+		// 	pointer-events: none;
+		// }
 		
 		/* Text container */
 		.awe-section-1 .home_slider-text {
 			position: absolute;
 			top: 50%;
 			left: 50%;
+			background-color: rgba(0,0,0,0.6);
 			transform: translate(-50%, -50%);
 			z-index: 2;
-			text-align: center;
+			text-align: left;
 			width: 90%;
-			max-width: 800px;
-			padding: 20px;
+			max-width: 950px;
+			padding: 35px;
 			box-sizing: border-box;
 		}
 		
@@ -787,9 +788,8 @@ Zotabox.widgets = Zotabox.widgets || [];</script><style>.vfm--fixed{position:fix
 		.awe-section-1 .home_slider-text h2 {
 			color: #ff6a00;
 			font-size: 28px;
-			font-weight: bold;
+			font-weight: 600;
 			margin: 0 0 10px 0;
-			text-transform: uppercase;
 		}
 		
 		/* Paragraph */
@@ -803,12 +803,13 @@ Zotabox.widgets = Zotabox.widgets || [];</script><style>.vfm--fixed{position:fix
 		/* Button */
 		.awe-section-1 .home_slider-text .button-orange {
 			display: inline-block;
-			background: #ff6a00;
-			color: #ffffff;
-			padding: 10px 25px;
-			border: 2px solid #ff6a00;
+			color: #be583f !important;
+			background-color: transparent;
+			padding: 9px 15px;
+			border: 1px solid #be583f;
+			border-radius: 2px;
 			text-decoration: none;
-			font-weight: bold;
+			margin-top: 15px;
 			transition: all 0.3s ease;
 		}
 		
@@ -857,7 +858,7 @@ Zotabox.widgets = Zotabox.widgets || [];</script><style>.vfm--fixed{position:fix
 		@media (max-width: 480px) {
 			.awe-section-1 .item picture,
 			.awe-section-1 .item img {
-				height: 32.5vh; /* Slightly shorter on very small screens */
+				height: 35.5vh; /* Slightly shorter on very small screens */
 			}
 		}
 	</style>
