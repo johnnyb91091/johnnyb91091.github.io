@@ -676,17 +676,50 @@ Zotabox.widgets = Zotabox.widgets || [];</script><style>.vfm--fixed{position:fix
 		</div>
 	</div>
 	
-	<!-- Custom CSS to match Image 1 exactly (dark overlay + centered white/orange text) -->
+	<!-- Updated CSS: Mobile text hidden + image sticks perfectly to section edges -->
 	<style>
+		.awe-section-1 {
+			padding: 0 !important; /* Override any theme padding that creates gaps */
+			margin: 0 !important;
+			overflow: hidden; /* Prevent any overflow issues */
+		}
+		
 		.awe-section-1 .home-slider {
 			position: relative;
+			width: 100%;
+			margin: 0;
+			padding: 0;
 		}
 		
 		.awe-section-1 .item {
 			position: relative;
+			width: 100%;
+			margin: 0;
+			padding: 0;
 		}
 		
-		/* Dark semi-transparent overlay behind the text (covers ~60% of the slider height, centered horizontally) */
+		/* Ensure image fills the entire section with no gaps/borders */
+		.awe-section-1 .item picture,
+		.awe-section-1 .item img {
+			display: block;
+			width: 100% !important;
+			height: auto;
+			max-width: 100%;
+			margin: 0 !important;
+			padding: 0 !important;
+			border: none !important;
+			object-fit: cover; /* Ensures image covers the area without distortion */
+		}
+		
+		/* Force full viewport width and stick to edges */
+		.awe-section-1 .item a.clearfix {
+			display: block;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		
+		/* Dark overlay (visible on desktop/tablet) */
 		.awe-section-1 .home_slider-text::before {
 			content: '';
 			position: absolute;
@@ -695,18 +728,18 @@ Zotabox.widgets = Zotabox.widgets || [];</script><style>.vfm--fixed{position:fix
 			transform: translate(-50%, -50%);
 			width: 60%;
 			height: 60%;
-			background: rgba(0, 0, 0, 0.5); /* Dark overlay matching Image 1 */
+			background: rgba(0, 0, 0, 0.5);
 			z-index: 1;
 			pointer-events: none;
 		}
 		
-		/* Container for text - ensures centering and stacking order */
+		/* Text container */
 		.awe-section-1 .home_slider-text {
 			position: absolute;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			z-index: 2; /* Above the overlay */
+			z-index: 2;
 			text-align: center;
 			width: 90%;
 			max-width: 800px;
@@ -714,16 +747,16 @@ Zotabox.widgets = Zotabox.widgets || [];</script><style>.vfm--fixed{position:fix
 			box-sizing: border-box;
 		}
 		
-		/* Title styling */
+		/* Title */
 		.awe-section-1 .home_slider-text h2 {
-			color: #ff6a00; /* Orange matching the theme */
+			color: #ff6a00;
 			font-size: 28px;
 			font-weight: bold;
 			margin: 0 0 10px 0;
 			text-transform: uppercase;
 		}
 		
-		/* Description paragraph */
+		/* Paragraph */
 		.awe-section-1 .home_slider-text p {
 			color: #ffffff;
 			font-size: 16px;
@@ -731,7 +764,7 @@ Zotabox.widgets = Zotabox.widgets || [];</script><style>.vfm--fixed{position:fix
 			margin: 0 0 20px 0;
 		}
 		
-		/* Button styling */
+		/* Button */
 		.awe-section-1 .home_slider-text .button-orange {
 			display: inline-block;
 			background: #ff6a00;
@@ -748,46 +781,48 @@ Zotabox.widgets = Zotabox.widgets || [];</script><style>.vfm--fixed{position:fix
 			color: #ff6a00;
 		}
 		
-		/* Responsive adjustments */
-		@media (max-width: 768px) {
-			.awe-section-1 .home_slider-text::before {
-				width: 80%;
-				height: 70%;
-			}
-			
-			.awe-section-1 .home_slider-text h2 {
-				font-size: 22px;
-			}
-			
-			.awe-section-1 .home_slider-text p {
-				font-size: 14px;
-			}
-		}
-		
-		@media (max-width: 480px) {
-			.awe-section-1 .home_slider-text::before {
-				width: 90%;
-				height: 80%;
-			}
-			
-			.awe-section-1 .home_slider-text h2 {
-				font-size: 18px;
-			}
-			
-			.awe-section-1 .home_slider-text p {
-				font-size: 13px;
-			}
-			
-			.awe-section-1 .home_slider-text .button-orange {
-				padding: 8px 20px;
-				font-size: 14px;
-			}
-		}
-		
-		/* Hide any remaining OwlCarousel dots/nav if theme forces them visible */
+		/* Hide navigation elements completely */
 		.awe-section-1 .owl-dots,
 		.awe-section-1 .owl-nav {
 			display: none !important;
+		}
+		
+		/* Mobile-specific rules (≤768px) */
+		@media (max-width: 768px) {
+			/* Hide the entire text block (title, paragraph, button) */
+			.awe-section-1 .home_slider-text {
+				display: none !important;
+			}
+			
+			/* Remove overlay on mobile since text is hidden */
+			.awe-section-1 .home_slider-text::before {
+				display: none;
+			}
+			
+			/* Ensure image sticks perfectly to section edges on mobile */
+			.awe-section-1 .item picture,
+			.awe-section-1 .item img {
+				height: 100vh; /* Full viewport height for immersive banner */
+				object-fit: cover;
+				object-position: center;
+			}
+			
+			/* Extra reinforcement for no gaps */
+			.awe-section-1,
+			.awe-section-1 .home-slider,
+			.awe-section-1 .item,
+			.awe-section-1 .item a {
+				height: 100%;
+				min-height: 300px; /* Minimum height fallback */
+			}
+		}
+		
+		/* Smaller mobile adjustments (≤480px) */
+		@media (max-width: 480px) {
+			.awe-section-1 .item picture,
+			.awe-section-1 .item img {
+				height: 80vh; /* Slightly shorter on very small screens */
+			}
 		}
 	</style>
 </section>
@@ -936,7 +971,7 @@ tờ rơi, phong bì, sổ tay</p>
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<div class="feature-item sl-large-house-1 feature-item-big text-center">
 					<div class="why-icon">
-						<img src="https://anyai.aah.id.vn/cdn/sec_why_image_1.png" data-lazyload="//bizweb.dktcdn.net/100/024/208/themes/911401/assets/sec_why_image_1.png?1750757553533" alt="UY TÍN LÂU NĂM" class="img-responsive center-block">
+						<img src="https://anyai.aah.id.vn/cdn/sec_why_image_1.png" data-lazyload="https://anyai.aah.id.vn/cdn/sec_why_image_1.png" alt="UY TÍN LÂU NĂM" class="img-responsive center-block">
 					</div>
 					<div class="ornament"></div>
 					<h3 class="box-header page-margin-top">UY TÍN LÂU NĂM</h3>
@@ -950,7 +985,7 @@ tờ rơi, phong bì, sổ tay</p>
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<div class="feature-item sl-large-house-1 feature-item-big text-center">
 					<div class="why-icon">
-						<img src="https://anyai.aah.id.vn/cdn/sec_why_image_2.png" data-lazyload="//bizweb.dktcdn.net/100/024/208/themes/911401/assets/sec_why_image_2.png?1750757553533" alt="SẢN PHẨM ĐA DẠNG" class="img-responsive center-block">
+						<img src="https://anyai.aah.id.vn/cdn/sec_why_image_2.png" data-lazyload="https://anyai.aah.id.vn/cdn/sec_why_image_2.png" alt="SẢN PHẨM ĐA DẠNG" class="img-responsive center-block">
 					</div>
 					<div class="ornament"></div>
 					<h3 class="box-header page-margin-top">SẢN PHẨM ĐA DẠNG</h3>
@@ -964,7 +999,7 @@ tờ rơi, phong bì, sổ tay</p>
 			<div class="col-md-4 col-sm-4 col-xs-12">
 				<div class="feature-item sl-large-house-1 feature-item-big text-center">
 					<div class="why-icon">
-						<img src="https://anyai.aah.id.vn/cdn/sec_why_image_3.png" data-lazyload="//bizweb.dktcdn.net/100/024/208/themes/911401/assets/sec_why_image_3.png?1750757553533" alt="DỊCH VỤ CHUYÊN NGHIỆP" class="img-responsive center-block">
+						<img src="https://anyai.aah.id.vn/cdn/sec_why_image_3.png" data-lazyload="https://anyai.aah.id.vn/cdn/sec_why_image_3.png" alt="DỊCH VỤ CHUYÊN NGHIỆP" class="img-responsive center-block">
 					</div>
 					<div class="ornament"></div>
 					<h3 class="box-header page-margin-top">DỊCH VỤ CHUYÊN NGHIỆP</h3>
