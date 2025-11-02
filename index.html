@@ -676,7 +676,120 @@ Zotabox.widgets = Zotabox.widgets || [];</script><style>.vfm--fixed{position:fix
 		</div>
 	</div>
 	
-	<!-- Removed OwlCarousel initialization script to fully disable carousel behavior -->
+	<!-- Custom CSS to match Image 1 exactly (dark overlay + centered white/orange text) -->
+	<style>
+		.awe-section-1 .home-slider {
+			position: relative;
+		}
+		
+		.awe-section-1 .item {
+			position: relative;
+		}
+		
+		/* Dark semi-transparent overlay behind the text (covers ~60% of the slider height, centered horizontally) */
+		.awe-section-1 .home_slider-text::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 60%;
+			height: 60%;
+			background: rgba(0, 0, 0, 0.5); /* Dark overlay matching Image 1 */
+			z-index: 1;
+			pointer-events: none;
+		}
+		
+		/* Container for text - ensures centering and stacking order */
+		.awe-section-1 .home_slider-text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 2; /* Above the overlay */
+			text-align: center;
+			width: 90%;
+			max-width: 800px;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+		
+		/* Title styling */
+		.awe-section-1 .home_slider-text h2 {
+			color: #ff6a00; /* Orange matching the theme */
+			font-size: 28px;
+			font-weight: bold;
+			margin: 0 0 10px 0;
+			text-transform: uppercase;
+		}
+		
+		/* Description paragraph */
+		.awe-section-1 .home_slider-text p {
+			color: #ffffff;
+			font-size: 16px;
+			line-height: 1.5;
+			margin: 0 0 20px 0;
+		}
+		
+		/* Button styling */
+		.awe-section-1 .home_slider-text .button-orange {
+			display: inline-block;
+			background: #ff6a00;
+			color: #ffffff;
+			padding: 10px 25px;
+			border: 2px solid #ff6a00;
+			text-decoration: none;
+			font-weight: bold;
+			transition: all 0.3s ease;
+		}
+		
+		.awe-section-1 .home_slider-text .button-orange:hover {
+			background: transparent;
+			color: #ff6a00;
+		}
+		
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.awe-section-1 .home_slider-text::before {
+				width: 80%;
+				height: 70%;
+			}
+			
+			.awe-section-1 .home_slider-text h2 {
+				font-size: 22px;
+			}
+			
+			.awe-section-1 .home_slider-text p {
+				font-size: 14px;
+			}
+		}
+		
+		@media (max-width: 480px) {
+			.awe-section-1 .home_slider-text::before {
+				width: 90%;
+				height: 80%;
+			}
+			
+			.awe-section-1 .home_slider-text h2 {
+				font-size: 18px;
+			}
+			
+			.awe-section-1 .home_slider-text p {
+				font-size: 13px;
+			}
+			
+			.awe-section-1 .home_slider-text .button-orange {
+				padding: 8px 20px;
+				font-size: 14px;
+			}
+		}
+		
+		/* Hide any remaining OwlCarousel dots/nav if theme forces them visible */
+		.awe-section-1 .owl-dots,
+		.awe-section-1 .owl-nav {
+			display: none !important;
+		}
+	</style>
 </section>
 
 
